@@ -37,7 +37,7 @@ This command was my Swiss Army knife: practical, but sometimes confusing.
 - **Simplicity**: Creating a new branch is more intuitive with `git switch -c new-branch`.
 
 ### **Usage example:**
-```properties
+```bash
 # Switch branches
 git switch main
 

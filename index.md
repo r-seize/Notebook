@@ -35,5 +35,5 @@ You can also find all of my projects, experiments, and open-source contributions
 
 {% assign en_categories = site.pages | where: "lang", "en" | where: "layout", "category" | sort: "nav_order" %}
 {% for cat in en_categories %}
-- [{{ cat.title }}]({{ cat.permalink }}) - {{ cat.description }}
+- [{{ cat.title }}]({{ cat.permalink | relative_url }}) - {{ cat.description }}
 {% endfor %}

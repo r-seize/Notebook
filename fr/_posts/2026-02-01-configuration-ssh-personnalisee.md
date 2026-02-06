@@ -2,7 +2,7 @@
 layout: post
 title: "Utiliser plusieurs clés SSH pour GitHub avec un seul ordinateur"
 date: 2026-02-01
-categories: [ssh]
+categories: [fr, ssh]
 lang: fr
 post_id: "ssh-github-multiple-keys"
 excerpt: "Apprenez à configurer plusieurs clés SSH pour gérer différents comptes GitHub sur un seul ordinateur."
@@ -15,7 +15,7 @@ Quand on travaille sur plusieurs projets GitHub (personnels, professionnels, sco
 
 Dans mon cas, j’ai trois comptes GitHub différents : un compte personnel, un compte pour l’entreprise et un compte pour l’école. Chacun utilise sa propre clé SSH. Voici la configuration utilisée.
 
-```properties
+```bash
 # Configuration pour GitHub perso
 Host github.com-perso
     HostName github.com
@@ -41,7 +41,7 @@ Le champ `User` est toujours défini sur `git`, car c’est l’utilisateur util
 
 Une fois cette configuration en place, il suffit d’adapter l’URL des dépôts Git. Par exemple, pour le compte personnel, l’URL SSH ressemblera à :
 
-```properties
+```bash
 git@github.com-perso:username/repo.git
 ```
 

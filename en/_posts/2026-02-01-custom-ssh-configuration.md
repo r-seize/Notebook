@@ -14,7 +14,7 @@ When working on multiple GitHub projects (personal, professional, academic), it 
 
 In my case, I have three different GitHub accounts: a personal account, a company account, and a school account. Each one uses its own SSH key. Here is the configuration I use.
 
-```properties
+```bash
 # Configuration for personal GitHub
 Host github.com-perso
     HostName github.com
@@ -40,7 +40,7 @@ The `User` field is always set to `git`, as this is the user GitHub uses for SSH
 
 Once this configuration is in place, simply adapt the URL of the Git repositories. For example, for the personal account, the SSH URL will look like:
 
-```properties
+```bash
 git@github.com-perso:username/repo.git
 ```
 

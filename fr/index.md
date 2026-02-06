@@ -35,5 +35,5 @@ Vous pouvez également retrouver l’ensemble de mes projets, expérimentations 
 
 {% assign fr_categories = site.pages | where: "lang", "fr" | where: "layout", "category" | sort: "nav_order" %}
 {% for cat in fr_categories %}
-- [{{ cat.title }}]({{ cat.permalink }}) - {{ cat.description }}
+- [{{ cat.title }}]({{ cat.permalink | relative_url }}) - {{ cat.description }}
 {% endfor %}

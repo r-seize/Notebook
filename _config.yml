@@ -20,11 +20,10 @@
 
 title: Notebook
 description: "Personal blog for sharing technical notes on IT / Blog personnel de notes techniques en informatique"
-baseurl: "/Notebook"
 url: "https://r-seize.github.io"
+baseurl: "/Notebook"
 footer_content: ""
 
-# IMPORTANT: Utiliser remote_theme au lieu de theme pour GitHub Pages
 remote_theme: just-the-docs/just-the-docs@v0.10.0
 
 plugins:

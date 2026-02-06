@@ -18,7 +18,7 @@ layout: default
         {% for post in filtered_posts %}
         <article style="margin-bottom: 2em; padding-bottom: 2em; border-bottom: 1px solid #e1e4e8;">
             <h2 style="margin-bottom: 0.5em;">
-                <a href="{{ post.url }}" style="text-decoration: none; color: #643FEC;">{{ post.title }}</a>
+                <a href="{{ post.url | relative_url }}" style="text-decoration: none; color: #643FEC;">{{ post.title }}</a>
             </h2>
             <p style="color: #666; font-size: 0.9em; margin-bottom: 1em;">
                 {% if page.lang == 'fr' %}
@@ -30,7 +30,7 @@ layout: default
             {% if post.excerpt %}
             <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
             {% endif %}
-            <a href="{{ post.url }}" style="color: #643FEC; font-size: 0.9em;">
+            <a href="{{ post.url | relative_url }}" style="color: #643FEC; font-size: 0.9em;">
                 {% if page.lang == 'fr' %}
                 Lire la suite →
                 {% else %}
@@ -42,9 +42,9 @@ layout: default
         {% else %}
         <p style="color: #666; font-style: italic;">
             {% if page.lang == 'fr' %}
-            <a href="/fr/categories/{{ category_slug }}/">
+            Aucun article dans cette catégorie.
             {% else %}
-            <a href="/categories/{{ category_slug }}/">
+            No articles in this category.
             {% endif %}
         </p>
         {% endif %}

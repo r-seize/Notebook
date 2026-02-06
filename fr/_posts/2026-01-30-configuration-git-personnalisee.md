@@ -2,7 +2,7 @@
 layout: post
 title: "Ma Configuration Git Personnalisée"
 date: 2026-01-30
-categories: [git]
+categories: [fr, git]
 lang: fr
 post_id: "gitconfig-personnelle"
 excerpt: "Découvrez ma configuration Git optimisée pour un workflow quotidien plus fluide et visuel."
@@ -17,7 +17,7 @@ Au début, on utilise Git avec les commandes de base : `git add`, `git commit`, 
 
 ## Les couleurs : voir en un coup d'œil
 
-```properties
+```bash
 [color]
   ui      = auto
   branch  = auto
@@ -45,7 +45,7 @@ C'est visuel, c'est immédiat, et ça évite de relire trois fois le `git status
 
 ## Les alias : mes raccourcis du quotidien
 
-```properties
+```bash
 [alias]
   st = status
   ci = commit
@@ -58,7 +58,7 @@ Ces alias de base, c'est comme mes touches de raccourci clavier. Au lieu de tape
 
 ### Les alias plus avancés
 
-```properties
+```bash
   rb = rebase
   ri = rebase -i
   rc = rebase --continue
@@ -74,7 +74,7 @@ Ces alias de base, c'est comme mes touches de raccourci clavier. Au lieu de tape
 
 C'est ici que ça devient vraiment intéressant :
 
-```properties
+```bash
   lo = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ar - %cs) %C(bold blue)<%an>%Creset' --abbrev-commit
 ```
 
@@ -87,7 +87,7 @@ Cette commande `git lo` affiche un historique graphique avec :
 
 Résultat : un log qui ressemble à un vrai outil visuel, pas juste une liste de texte.
 
-```properties
+```bash
   lh = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Creset' --abbrev-commit --date=relative
 ```
 
@@ -95,7 +95,7 @@ Résultat : un log qui ressemble à un vrai outil visuel, pas juste une liste de
 
 ### L'alias qui liste les branches par date
 
-```properties
+```bash
   lb = !git for-each-ref --sort=creatordate --format='%(color:yellow)%(refname:short)%(color:reset)  |  %(color:green)%(creatordate:relative)%(color:reset)  |  %(authorname)' refs/heads/
 ```
 
@@ -103,7 +103,7 @@ Résultat : un log qui ressemble à un vrai outil visuel, pas juste une liste de
 
 ### Les nouveaux venus
 
-```properties
+```bash
   rt = restore
   sw = switch
 ```
@@ -112,7 +112,7 @@ Depuis que Git a introduit `restore` et `switch` pour clarifier les usages de `c
 
 ## Delta : mon viewer de diff préféré
 
-```properties
+```bash
 [delta]
   features      = decorations
   side-by-side  = true
@@ -127,7 +127,7 @@ J'utilise [delta](https://github.com/dandavison/delta) pour afficher mes diffs. 
 
 Au lieu d'avoir un diff austère, j'ai un vrai outil de comparaison qui me permet de comprendre instantanément ce qui a changé.
 
-```properties
+```bash
 [pager]
   diff    = delta
   log     = delta
@@ -139,7 +139,7 @@ Tous mes affichages passent par delta. C'est configuré une fois, et après c'es
 
 ## Configuration du core
 
-```properties
+```bash
 [core]
   autocrlf    = input
   editor      = vim
@@ -152,21 +152,21 @@ Tous mes affichages passent par delta. C'est configuré une fois, et après c'es
 
 ## Les petits plus pratiques
 
-```properties
+```bash
 [push]
   autoSetupRemote = true
 ```
 
 Cette option est géniale : quand je crée une nouvelle branche et que je fais `git push`, Git configure automatiquement le tracking avec la branche distante. Plus besoin de faire `git push -u origin ma-branche`.
 
-```properties
+```bash
 [init]
   defaultBranch   = main
 ```
 
 Depuis quelques années, `main` au lieu de `master`. Simple et clair.
 
-```properties
+```bash
 [credential]
   helper = osxkeychain
 ```

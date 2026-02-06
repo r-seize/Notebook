@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const langData = document.getElementById('lang-data');
     if (!langData) return;
 
+    const baseUrl           = langData.dataset.baseurl || '';
     const currentLang       = langData.dataset.lang;
     const isCategory        = langData.dataset.isCategory === 'true';
     const categorySlug      = langData.dataset.categorySlug;
@@ -14,28 +15,30 @@ document.addEventListener('DOMContentLoaded', function () {
             const href = link.getAttribute('href');
             if (!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto:')) return;
 
-            if (preferredLang === 'fr' && !href.startsWith('/fr/')) {
-                if (href.startsWith('/categories/')) {
-                    const parts = href.split('/').filter(p => p);
+            const pathWithoutBase = href.replace(baseUrl, '');
+
+            if (preferredLang === 'fr' && !pathWithoutBase.startsWith('/fr/')) {
+                if (pathWithoutBase.startsWith('/categories/')) {
+                    const parts = pathWithoutBase.split('/').filter(p => p);
                     if (parts.length >= 2) {
                         const category = parts[1];
-                        link.setAttribute('href', `/fr/categories/${category}/`);
+                        link.setAttribute('href', baseUrl + '/fr/categories/' + category + '/');
                     }
                 }
-                else if (href === '/') {
-                    link.setAttribute('href', '/fr/');
+                else if (pathWithoutBase === '/') {
+                    link.setAttribute('href', baseUrl + '/fr/');
                 }
             }
-            else if (preferredLang === 'en' && href.startsWith('/fr/')) {
-                if (href.startsWith('/fr/categories/')) {
-                    const parts = href.split('/').filter(p => p);
+            else if (preferredLang === 'en' && pathWithoutBase.startsWith('/fr/')) {
+                if (pathWithoutBase.startsWith('/fr/categories/')) {
+                    const parts = pathWithoutBase.split('/').filter(p => p);
                     if (parts.length >= 3) {
                         const category = parts[2];
-                        link.setAttribute('href', `/categories/${category}/`);
+                        link.setAttribute('href', baseUrl + '/categories/' + category + '/');
                     }
                 }
-                else if (href === '/fr/' || href === '/fr') {
-                    link.setAttribute('href', '/');
+                else if (pathWithoutBase === '/fr/' || pathWithoutBase === '/fr') {
+                    link.setAttribute('href', baseUrl + '/');
                 }
             }
         });
@@ -51,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     adaptAllLinks();
-
     setTimeout(adaptAllLinks, 100);
     setTimeout(adaptAllLinks, 500);
 
@@ -66,23 +68,28 @@ document.addEventListener('DOMContentLoaded', function () {
             if (targetLang === currentLang) return;
             localStorage.setItem('preferredLang', targetLang);
 
-            let targetUrl = '/';
+            let targetUrl = baseUrl + '/';
 
             if (translationUrl) {
                 targetUrl = translationUrl;
             }
             else if (isCategory && categorySlug) {
                 if (targetLang === 'fr') {
-                    targetUrl = `/fr/categories/${categorySlug}/`;
+                    targetUrl = baseUrl + '/fr/categories/' + categorySlug + '/';
                 } else {
-                    targetUrl = `/categories/${categorySlug}/`;
+                    targetUrl = baseUrl + '/categories/' + categorySlug + '/';
                 }
             }
-            else if (window.location.pathname === '/' || window.location.pathname === '/fr/' || window.location.pathname === '/fr') {
-                targetUrl = targetLang === 'fr' ? '/fr/' : '/';
-            }
             else {
-                targetUrl = targetLang === 'fr' ? '/fr/' : '/';
+                const currentPath = window.location.pathname;
+                const pathWithoutBase = currentPath.replace(baseUrl, '');
+                
+                if (pathWithoutBase === '/' || pathWithoutBase === '/fr/' || pathWithoutBase === '/fr') {
+                    targetUrl = targetLang === 'fr' ? baseUrl + '/fr/' : baseUrl + '/';
+                }
+                else {
+                    targetUrl = targetLang === 'fr' ? baseUrl + '/fr/' : baseUrl + '/';
+                }
             }
             window.location.href = targetUrl;
         });

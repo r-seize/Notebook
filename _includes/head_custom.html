@@ -14,48 +14,50 @@
   {% for post in site.posts %}
     {% if post.post_id == current_post_id %}
       {% if post.lang == 'en' %}
-<link rel="alternate" hreflang="en" href="{{ site.url }}{{ post.url }}" />
+<link rel="alternate" hreflang="en" href="{{ site.url }}{{ site.baseurl }}{{ post.url }}" />
       {% elsif post.lang == 'fr' %}
-<link rel="alternate" hreflang="fr" href="{{ site.url }}{{ post.url }}" />
+<link rel="alternate" hreflang="fr" href="{{ site.url }}{{ site.baseurl }}{{ post.url }}" />
       {% endif %}
     {% endif %}
   {% endfor %}
-  <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.url }}" />
+  <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}" />
 {% endif %}
 
 {% if is_category %}
   {% if current_lang == 'en' %}
-<link rel="alternate" hreflang="en" href="{{ site.url }}/categories/{{ category_slug }}/" />
-<link rel="alternate" hreflang="fr" href="{{ site.url }}/fr/categories/{{ category_slug }}/" />
-<link rel="alternate" hreflang="x-default" href="{{ site.url }}/categories/{{ category_slug }}/" />
+<link rel="alternate" hreflang="en" href="{{ site.url }}{{ site.baseurl }}/categories/{{ category_slug }}/" />
+<link rel="alternate" hreflang="fr" href="{{ site.url }}{{ site.baseurl }}/fr/categories/{{ category_slug }}/" />
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ site.baseurl }}/categories/{{ category_slug }}/" />
   {% else %}
-<link rel="alternate" hreflang="en" href="{{ site.url }}/categories/{{ category_slug }}/" />
-<link rel="alternate" hreflang="fr" href="{{ site.url }}/fr/categories/{{ category_slug }}/" />
-<link rel="alternate" hreflang="x-default" href="{{ site.url }}/categories/{{ category_slug }}/" />
+<link rel="alternate" hreflang="en" href="{{ site.url }}{{ site.baseurl }}/categories/{{ category_slug }}/" />
+<link rel="alternate" hreflang="fr" href="{{ site.url }}{{ site.baseurl }}/fr/categories/{{ category_slug }}/" />
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ site.baseurl }}/categories/{{ category_slug }}/" />
   {% endif %}
 {% endif %}
 
 {% if page.url == '/' or page.url == '/fr/' %}
-<link rel="alternate" hreflang="en" href="{{ site.url }}/" />
-<link rel="alternate" hreflang="fr" href="{{ site.url }}/fr/" />
-<link rel="alternate" hreflang="x-default" href="{{ site.url }}/" />
+<link rel="alternate" hreflang="en" href="{{ site.url }}{{ site.baseurl }}/" />
+<link rel="alternate" hreflang="fr" href="{{ site.url }}{{ site.baseurl }}/fr/" />
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ site.baseurl }}/" />
 {% endif %}
 
 <script>
   (function() {
-    const preferredLang   = localStorage.getItem('preferredLang');
-    const currentPath     = window.location.pathname;
+    const baseUrl = '{{ site.baseurl }}';
+    const preferredLang = localStorage.getItem('preferredLang');
+    const currentPath = window.location.pathname;
+    const pathWithoutBase = currentPath.replace(baseUrl, '');
 
     if (!preferredLang) {
-      if (currentPath.startsWith('/fr/') || currentPath === '/fr') {
+      if (pathWithoutBase.startsWith('/fr/') || pathWithoutBase === '/fr' || pathWithoutBase === '/fr/') {
         localStorage.setItem('preferredLang', 'fr');
       } else {
         localStorage.setItem('preferredLang', 'en');
       }
     }
 
-    const isFrenchPage    = currentPath.startsWith('/fr/') || currentPath === '/fr';
-    const isEnglishPage   = !isFrenchPage;
+    const isFrenchPage = pathWithoutBase.startsWith('/fr/') || pathWithoutBase === '/fr' || pathWithoutBase === '/fr/';
+    const isEnglishPage = !isFrenchPage;
 
     const isInternalNavigation = document.referrer && 
       (document.referrer.includes(window.location.hostname) || 
@@ -64,38 +66,37 @@
 
     if (!isInternalNavigation) {
       if (preferredLang === 'fr' && isEnglishPage) {
-        let targetUrl = '/fr/';
+        let targetUrl = baseUrl + '/fr/';
 
-        if (currentPath === '/' || currentPath === '') {
-          targetUrl = '/fr/';
+        if (pathWithoutBase === '/' || pathWithoutBase === '') {
+          targetUrl = baseUrl + '/fr/';
         }
-        else if (currentPath.startsWith('/categories/')) {
-          const category = currentPath.split('/')[2];
+        else if (pathWithoutBase.startsWith('/categories/')) {
+          const category = pathWithoutBase.split('/')[2];
           if (category) {
-            targetUrl = `/fr/categories/${category}/`;
+            targetUrl = baseUrl + '/fr/categories/' + category + '/';
           }
         }
-        else if (currentPath.match(/\/\d{4}\/\d{2}\/\d{2}\//)) {
-          targetUrl = '/fr/';
+        else if (pathWithoutBase.match(/\/\d{4}\/\d{2}\/\d{2}\//)) {
+          targetUrl = baseUrl + '/fr/';
         }
 
         window.location.href = targetUrl;
       }
-
       else if (preferredLang === 'en' && isFrenchPage) {
-        let targetUrl = '/';
+        let targetUrl = baseUrl + '/';
 
-        if (currentPath === '/fr/' || currentPath === '/fr') {
-          targetUrl = '/';
+        if (pathWithoutBase === '/fr/' || pathWithoutBase === '/fr') {
+          targetUrl = baseUrl + '/';
         }
-        else if (currentPath.startsWith('/fr/categories/')) {
-          const category = currentPath.split('/')[3];
+        else if (pathWithoutBase.startsWith('/fr/categories/')) {
+          const category = pathWithoutBase.split('/')[3];
           if (category) {
-            targetUrl = `/categories/${category}/`;
+            targetUrl = baseUrl + '/categories/' + category + '/';
           }
         }
-        else if (currentPath.match(/\/fr\/\d{4}\/\d{2}\/\d{2}\//)) {
-          targetUrl = '/';
+        else if (pathWithoutBase.match(/\/fr\/\d{4}\/\d{2}\/\d{2}\//)) {
+          targetUrl = baseUrl + '/';
         }
         
         window.location.href = targetUrl;

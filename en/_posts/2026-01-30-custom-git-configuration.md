@@ -16,7 +16,7 @@ At first, you use Git with the basic commands: `git add`, `git commit`, `git pus
 
 ## Colors: see at a glance
 
-```properties
+```bash
 [color]
   ui      = auto
   branch  = auto
@@ -44,7 +44,7 @@ It's visual, it's immediate, and it saves me from having to reread `git status` 
 
 ## Aliases: my everyday shortcuts
 
-```properties
+```bash
 [alias]
   st = status
   ci = commit
@@ -57,7 +57,7 @@ These basic aliases are like my keyboard shortcuts. Instead of typing `git statu
 
 ### More advanced aliases
 
-```properties
+```bash
   rb = rebase
   ri = rebase -i
   rc = rebase --continue
@@ -73,7 +73,7 @@ These basic aliases are like my keyboard shortcuts. Instead of typing `git statu
 
 This is where it gets really interesting:
 
-```properties
+```bash
   lo = log --graph --pretty=format:‘%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ar - %cs) %C(bold blue)<%an>%Creset’ --abbrev-commit
 ```
 
@@ -86,7 +86,7 @@ This `git lo` command displays a graphical history with:
 
 The result: a log that looks like a real visual tool, not just a list of text.
 
-```properties
+```bash
   lh = log --graph --pretty=format:‘%Cred%h%Creset -%C(yellow)%d%Creset %s %Creset’ --abbrev-commit --date=relative
 ```
 
@@ -94,7 +94,7 @@ The result: a log that looks like a real visual tool, not just a list of text.
 
 ### The alias that lists branches by date
 
-```properties
+```bash
   lb = !git for-each-ref --sort=creatordate --format='%(color:yellow)%(refname:short)%(color:reset)  |  %(color:green)%(creatordate:relative)%(color:reset)  |  %(authorname)' refs/heads/
 ```
 
@@ -102,7 +102,7 @@ The result: a log that looks like a real visual tool, not just a list of text.
 
 ### Newcomers
 
-```properties
+```bash
   rt = restore
   sw = switch
 ```
@@ -111,7 +111,7 @@ Since Git introduced `restore` and `switch` to clarify the uses of `checkout`, I
 
 ## Delta: my favorite diff viewer
 
-```properties
+```bash
 [delta]
   features      = decorations
   side-by-side  = true
@@ -126,7 +126,7 @@ I use [delta](https://github.com/dandavison/delta) to display my diffs. It's a t
 
 Instead of having an austere diff, I have a real comparison tool that allows me to instantly understand what has changed.
 
-```properties
+```bash
 [pager]
   diff    = delta
   log     = delta
@@ -138,7 +138,7 @@ All my displays go through delta. It's configured once, and after that it's tran
 
 ## Core configuration
 
-```properties
+```bash
 [core]
   autocrlf    = input
   editor      = vim
@@ -151,21 +151,21 @@ All my displays go through delta. It's configured once, and after that it's tran
 
 ## Handy extras
 
-```properties
+```bash
 [push]
   autoSetupRemote = true
 ```
 
 This option is great: when I create a new branch and do `git push`, Git automatically configures tracking with the remote branch. No need to do `git push -u origin my-branch` anymore.
 
-```properties
+```bash
 [init]
   defaultBranch   = main
 ```
 
 For the past few years, `main` instead of `master`. Simple and clear.
 
-```properties
+```bash
 [credential]
   helper = osxkeychain
 ```

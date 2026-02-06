@@ -2,7 +2,7 @@
 layout: post
 title: "Git Checkout vs Git Switch : Quelle Commande Utiliser ?"
 date: 2026-02-03
-categories: [git]
+categories: [fr, git]
 lang: fr
 post_id: "git-checkout-vs-switch"
 excerpt: "Découvrez pourquoi et quand utiliser `git switch` plutôt que `git checkout` pour changer de branche, et comment simplifier votre workflow Git."
@@ -38,7 +38,7 @@ Cette commande était mon couteau suisse : pratique, mais parfois source de conf
 - **Simplicité** : Créer une nouvelle branche est plus intuitif avec `git switch -c nouvelle-branche`.
 
 ### **Exemple d’utilisation :**
-```properties
+```bash
 # Changer de branche
 git switch main
 
