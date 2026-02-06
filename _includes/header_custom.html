@@ -1,0 +1,34 @@
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign current_post_id = page.post_id %}
+{% assign is_category = false %}
+{% assign category_slug = '' %}
+
+{% if page.layout == 'category' %}
+  {% assign is_category = true %}
+  {% assign category_slug = page.category_slug %}
+{% endif %}
+
+<div id="lang-data"
+     data-lang="{{ current_lang }}"
+     data-is-category="{{ is_category }}"
+     data-category-slug="{{ category_slug }}"
+     {% if current_post_id %}
+       {% for post in site.posts %}
+         {% if post.post_id == current_post_id and post.lang != current_lang %}
+           data-translation="{{ post.url }}"
+         {% endif %}
+       {% endfor %}
+     {% endif %}
+     style="display:none;">
+</div>
+
+<div class="lang-switcher-header">
+  <a href="#" data-lang="en" title="English" 
+     {% if current_lang == 'en' %}class="active"{% endif %}>
+     🇬🇧
+  </a>
+  <a href="#" data-lang="fr" title="Français" 
+     {% if current_lang == 'fr' %}class="active"{% endif %}>
+     🇫🇷
+  </a>
+</div>

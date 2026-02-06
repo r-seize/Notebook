@@ -1,0 +1,11 @@
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
+vendor/bundle
+.bundle
+fr/categories/_template.md
+en/categories/_template.md
+en/_posts/template.md
+fr/_posts/template.md

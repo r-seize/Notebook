@@ -1,0 +1,111 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+#
+# If you need help with YAML syntax, here are some quick references for you:
+# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
+# https://learnxinyminutes.com/docs/yaml/
+#
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
+title: Notebook
+description: "Personal blog for sharing technical notes on IT / Blog personnel de notes techniques en informatique"
+baseurl: "/Notebook"
+url: "https://r-seize.github.io"
+footer_content: ""
+
+# IMPORTANT: Utiliser remote_theme au lieu de theme pour GitHub Pages
+remote_theme: just-the-docs/just-the-docs@v0.10.0
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-remote-theme
+
+markdown: kramdown
+
+search_enabled: true
+heading_anchors: true
+nav_sort: case_insensitive
+
+aux_links:
+  "GitHub":
+    - "https://github.com/r-seize/Notebook"
+
+collections:
+  posts:
+    output: true
+
+defaults:
+  - scope:
+      path: "en/_posts"
+      type: posts
+    values:
+      layout: post
+      lang: en
+      nav_exclude: true
+
+  - scope:
+      path: "fr/_posts"
+      type: posts
+    values:
+      layout: post
+      lang: fr
+      nav_exclude: true
+
+  - scope:
+      path: "en/categories"
+    values:
+      layout: category
+      lang: en
+      nav_exclude: false
+
+  - scope:
+      path: "fr/categories"
+    values:
+      layout: category
+      lang: fr
+      nav_exclude: true
+
+  - scope:
+      path: "en"
+    values:
+      layout: default
+      lang: en
+
+  - scope:
+      path: "fr"
+    values:
+      layout: default
+      lang: fr
+      nav_exclude: true
+
+# Exclude from processing.
+# The following items will not be processed, by default.
+# Any item listed under the `exclude:` key here will be automatically added to
+# the internal "default list".
+#
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+#
+# exclude:
+#   - .sass-cache/
+#   - .jekyll-cache/
+#   - gemfiles/
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules/
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/

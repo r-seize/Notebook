@@ -1,0 +1,165 @@
+<link rel="icon" href="{{ '/assets/favicon.ico' | relative_url }}">
+
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign current_post_id = page.post_id %}
+{% assign is_category = false %}
+{% assign category_slug = '' %}
+
+{% if page.layout == 'category' %}
+  {% assign is_category = true %}
+  {% assign category_slug = page.category_slug %}
+{% endif %}
+
+{% if current_post_id %}
+  {% for post in site.posts %}
+    {% if post.post_id == current_post_id %}
+      {% if post.lang == 'en' %}
+<link rel="alternate" hreflang="en" href="{{ site.url }}{{ post.url }}" />
+      {% elsif post.lang == 'fr' %}
+<link rel="alternate" hreflang="fr" href="{{ site.url }}{{ post.url }}" />
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.url }}" />
+{% endif %}
+
+{% if is_category %}
+  {% if current_lang == 'en' %}
+<link rel="alternate" hreflang="en" href="{{ site.url }}/categories/{{ category_slug }}/" />
+<link rel="alternate" hreflang="fr" href="{{ site.url }}/fr/categories/{{ category_slug }}/" />
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}/categories/{{ category_slug }}/" />
+  {% else %}
+<link rel="alternate" hreflang="en" href="{{ site.url }}/categories/{{ category_slug }}/" />
+<link rel="alternate" hreflang="fr" href="{{ site.url }}/fr/categories/{{ category_slug }}/" />
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}/categories/{{ category_slug }}/" />
+  {% endif %}
+{% endif %}
+
+{% if page.url == '/' or page.url == '/fr/' %}
+<link rel="alternate" hreflang="en" href="{{ site.url }}/" />
+<link rel="alternate" hreflang="fr" href="{{ site.url }}/fr/" />
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}/" />
+{% endif %}
+
+<script>
+  (function() {
+    const preferredLang   = localStorage.getItem('preferredLang');
+    const currentPath     = window.location.pathname;
+
+    if (!preferredLang) {
+      if (currentPath.startsWith('/fr/') || currentPath === '/fr') {
+        localStorage.setItem('preferredLang', 'fr');
+      } else {
+        localStorage.setItem('preferredLang', 'en');
+      }
+    }
+
+    const isFrenchPage    = currentPath.startsWith('/fr/') || currentPath === '/fr';
+    const isEnglishPage   = !isFrenchPage;
+
+    const isInternalNavigation = document.referrer && 
+      (document.referrer.includes(window.location.hostname) || 
+       document.referrer.includes('127.0.0.1') ||
+       document.referrer.includes('localhost'));
+
+    if (!isInternalNavigation) {
+      if (preferredLang === 'fr' && isEnglishPage) {
+        let targetUrl = '/fr/';
+
+        if (currentPath === '/' || currentPath === '') {
+          targetUrl = '/fr/';
+        }
+        else if (currentPath.startsWith('/categories/')) {
+          const category = currentPath.split('/')[2];
+          if (category) {
+            targetUrl = `/fr/categories/${category}/`;
+          }
+        }
+        else if (currentPath.match(/\/\d{4}\/\d{2}\/\d{2}\//)) {
+          targetUrl = '/fr/';
+        }
+
+        window.location.href = targetUrl;
+      }
+
+      else if (preferredLang === 'en' && isFrenchPage) {
+        let targetUrl = '/';
+
+        if (currentPath === '/fr/' || currentPath === '/fr') {
+          targetUrl = '/';
+        }
+        else if (currentPath.startsWith('/fr/categories/')) {
+          const category = currentPath.split('/')[3];
+          if (category) {
+            targetUrl = `/categories/${category}/`;
+          }
+        }
+        else if (currentPath.match(/\/fr\/\d{4}\/\d{2}\/\d{2}\//)) {
+          targetUrl = '/';
+        }
+        
+        window.location.href = targetUrl;
+      }
+    } else {
+      if (isFrenchPage) {
+        localStorage.setItem('preferredLang', 'fr');
+      } else {
+        localStorage.setItem('preferredLang', 'en');
+      }
+    }
+  })();
+</script>
+
+<script src="{{ '/assets/js/language.js' | relative_url }}"></script>
+
+<style>
+  .lang-switcher-header {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    z-index: 1001;
+    display: flex;
+    gap: 8px;
+    background: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border: 1px solid #e1e4e8;
+  }
+
+  .lang-switcher-header a {
+    font-size: 20px;
+    text-decoration: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    opacity: 0.6;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .lang-switcher-header a:not(.active):hover {
+    transform: scale(1.15);
+    opacity: 0.9;
+  }
+
+  .lang-switcher-header a.active {
+    transform: scale(1.25);
+    opacity: 1 !important;
+    cursor: default;
+  }
+
+  @media (max-width: 768px) {
+    .lang-switcher-header {
+      top: 5px;
+      right: 10px;
+      padding: 4px 8px;
+    }
+
+    .lang-switcher-header a {
+      font-size: 18px;
+    }
+  }
+
+  .site-footer {
+      display: none !important;
+  }
+</style>

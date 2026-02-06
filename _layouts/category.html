@@ -1,0 +1,52 @@
+---
+layout: default
+---
+
+<div class="category-page">
+    <header style="margin-bottom: 2em;">
+        <h1>{{ page.title }}</h1>
+        {% if page.description %}
+        <p style="color: #666; font-size: 1.1em;">{{ page.description }}</p>
+        {% endif %}
+    </header>
+
+    <div class="posts-list">
+        {% assign category_slug = page.category_slug %}
+        {% assign filtered_posts = site.posts | where: "lang", page.lang | where_exp: "post", "post.categories contains category_slug" | sort: "date" | reverse %}
+
+        {% if filtered_posts.size > 0 %}
+        {% for post in filtered_posts %}
+        <article style="margin-bottom: 2em; padding-bottom: 2em; border-bottom: 1px solid #e1e4e8;">
+            <h2 style="margin-bottom: 0.5em;">
+                <a href="{{ post.url }}" style="text-decoration: none; color: #643FEC;">{{ post.title }}</a>
+            </h2>
+            <p style="color: #666; font-size: 0.9em; margin-bottom: 1em;">
+                {% if page.lang == 'fr' %}
+                {{ post.date | date: "%d %B %Y" }}
+                {% else %}
+                {{ post.date | date: "%B %d, %Y" }}
+                {% endif %}
+            </p>
+            {% if post.excerpt %}
+            <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+            {% endif %}
+            <a href="{{ post.url }}" style="color: #643FEC; font-size: 0.9em;">
+                {% if page.lang == 'fr' %}
+                Lire la suite →
+                {% else %}
+                Read more →
+                {% endif %}
+            </a>
+        </article>
+        {% endfor %}
+        {% else %}
+        <p style="color: #666; font-style: italic;">
+            {% if page.lang == 'fr' %}
+            <a href="/fr/categories/{{ category_slug }}/">
+            {% else %}
+            <a href="/categories/{{ category_slug }}/">
+            {% endif %}
+        </p>
+        {% endif %}
+    </div>
+</div>
