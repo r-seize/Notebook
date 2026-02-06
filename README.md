@@ -1,6 +1,8 @@
 # Notebook
 
-[![Live Site](https://img.shields.io/badge/🌐_Live_Site-r--seize.github.io/Notebook-blue?style=for-the-badge)](https://r-seize.github.io/Notebook)
+<a href="https://r-seize.github.io/Notebook" target="_blank">
+  <img src="https://img.shields.io/badge/🌐_Live_Site-r--seize.github.io/Notebook-blue?style=for-the-badge" alt="Live Site"/>
+</a>
 
 Welcome to my technical blog dedicated to software development, DevOps, and IT technologies.
 
