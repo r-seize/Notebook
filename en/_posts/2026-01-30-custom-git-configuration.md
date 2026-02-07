@@ -178,7 +178,7 @@ My Git configuration reflects the way I work (but also draws heavily on inspirat
 
 My advice: don't just copy this configuration, but use it as inspiration. Add aliases that correspond to YOUR most frequently used commands. Try out colors that appeal to YOU. Your `.gitconfig` should reflect your personality.
 
-If this configuration inspires you, you can find my complete `.gitconfig` file [here]() and freely adapt it to your own workflow.
+If this configuration inspires you, you can find my complete `.gitconfig` file [here](https://github.com/r-seize/dotfiles) and freely adapt it to your own workflow.
 
 ---
 

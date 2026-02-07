@@ -179,7 +179,7 @@ Ma configuration Git, c'est le reflet de ma façon de travailler(mais aussi plei
 
 Mon conseil : ne copiez pas bêtement cette config, mais inspirez-vous-en. Ajoutez les alias qui correspondent à VOS commandes les plus fréquentes. Testez les couleurs qui VOUS parlent. Votre `.gitconfig` doit être à votre image.
 
-Si cette configuration t’inspire, tu peux retrouver mon fichier `.gitconfig` complet [ici]() et l’adapter librement à ton propre workflow.
+Si cette configuration t’inspire, tu peux retrouver mon fichier `.gitconfig` complet [ici](https://github.com/r-seize/dotfiles) et l’adapter librement à ton propre workflow.
 
 ---
 

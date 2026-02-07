@@ -49,4 +49,4 @@ Pour l’entreprise ou l’école, on utilisera simplement l’alias corresponda
 
 Cette méthode est pratique, propre et évite beaucoup de confusion lorsqu’on jongle entre plusieurs environnements GitHub sur une même machine.
 
-Si cette configuration t’inspire, tu peux retrouver mon fichier `.ssh/config` complet [ici]() et l’adapter librement à ton propre workflow.
+Si cette configuration t’inspire, tu peux retrouver mon fichier `.ssh/config` complet [ici](https://github.com/r-seize/dotfiles) et l’adapter librement à ton propre workflow.
