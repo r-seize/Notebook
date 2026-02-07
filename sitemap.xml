@@ -7,10 +7,10 @@ layout: null
 
   <!--EN -->
   <url>
-    <loc>{{ site.url }}/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="{{ site.url }}/fr/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/" />
+    <loc>{{ site.url }}{{ site.baseurl }}/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}{{ site.baseurl }}/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="{{ site.url }}{{ site.baseurl }}/fr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ site.baseurl }}/" />
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -18,10 +18,10 @@ layout: null
 
   <!--FR -->
   <url>
-    <loc>{{ site.url }}/fr/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="{{ site.url }}/fr/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/" />
+    <loc>{{ site.url }}{{ site.baseurl }}/fr/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}{{ site.baseurl }}/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="{{ site.url }}{{ site.baseurl }}/fr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ site.baseurl }}/" />
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -31,10 +31,10 @@ layout: null
   {% assign en_categories = site.pages | where: "lang", "en" | where: "layout", "category" %}
   {% for cat in en_categories %}
   <url>
-    <loc>{{ site.url }}{{ cat.url }}</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}{{ cat.url }}" />
-    <xhtml:link rel="alternate" hreflang="fr" href="{{ site.url }}/fr{{ cat.url }}" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ cat.url }}" />
+    <loc>{{ site.url }}{{ site.baseurl }}{{ cat.url }}</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}{{ site.baseurl }}{{ cat.url }}" />
+    <xhtml:link rel="alternate" hreflang="fr" href="{{ site.url }}{{ site.baseurl }}/fr{{ cat.url }}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ site.baseurl }}{{ cat.url }}" />
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -43,10 +43,10 @@ layout: null
   {% assign fr_categories = site.pages | where: "lang", "fr" | where: "layout", "category" %}
   {% for cat in fr_categories %}
   <url>
-    <loc>{{ site.url }}{{ cat.url }}</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}{{ cat.url | remove: '/fr' }}" />
-    <xhtml:link rel="alternate" hreflang="fr" href="{{ site.url }}{{ cat.url }}" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ cat.url | remove: '/fr' }}" />
+    <loc>{{ site.url }}{{ site.baseurl }}{{ cat.url }}</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}{{ site.baseurl }}{{ cat.url | remove: '/fr' }}" />
+    <xhtml:link rel="alternate" hreflang="fr" href="{{ site.url }}{{ site.baseurl }}{{ cat.url }}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ site.baseurl }}{{ cat.url | remove: '/fr' }}" />
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -61,12 +61,12 @@ layout: null
 
     {% if en_post %}
     <url>
-      <loc>{{ site.url }}{{ en_post.url }}</loc>
-      <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}{{ en_post.url }}" />
+      <loc>{{ site.url }}{{ site.baseurl }}{{ en_post.url }}</loc>
+      <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}{{ site.baseurl }}{{ en_post.url }}" />
       {% if fr_post %}
-      <xhtml:link rel="alternate" hreflang="fr" href="{{ site.url }}{{ fr_post.url }}" />
+      <xhtml:link rel="alternate" hreflang="fr" href="{{ site.url }}{{ site.baseurl }}{{ fr_post.url }}" />
       {% endif %}
-      <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ en_post.url }}" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ site.baseurl }}{{ en_post.url }}" />
       <lastmod>{{ en_post.date | date_to_xmlschema }}</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
@@ -75,12 +75,12 @@ layout: null
 
     {% if fr_post %}
     <url>
-      <loc>{{ site.url }}{{ fr_post.url }}</loc>
+      <loc>{{ site.url }}{{ site.baseurl }}{{ fr_post.url }}</loc>
       {% if en_post %}
-      <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}{{ en_post.url }}" />
+      <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}{{ site.baseurl }}{{ en_post.url }}" />
       {% endif %}
-      <xhtml:link rel="alternate" hreflang="fr" href="{{ site.url }}{{ fr_post.url }}" />
-      <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ en_post.url }}" />
+      <xhtml:link rel="alternate" hreflang="fr" href="{{ site.url }}{{ site.baseurl }}{{ fr_post.url }}" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ site.baseurl }}{{ en_post.url }}" />
       <lastmod>{{ fr_post.date | date_to_xmlschema }}</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
