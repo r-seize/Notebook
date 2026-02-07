@@ -25,3 +25,4 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 
 # Thème just-the-docs via remote_theme
 gem "just-the-docs"
+gem 'jekyll-sitemap'
