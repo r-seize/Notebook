@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://r-seize.github.io/Notebook/sitemap.xml
