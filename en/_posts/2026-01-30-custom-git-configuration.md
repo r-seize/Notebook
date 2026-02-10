@@ -118,7 +118,7 @@ Since Git introduced `restore` and `switch` to clarify the uses of `checkout`, I
   line-numbers  = true
 ```
 
-I use [delta](https://github.com/dandavison/delta) to display my diffs. It's a tool that completely transforms the visual experience:
+I use <a href="https://github.com/dandavison/delta" target="_blank">delta</a> to display my diffs. It's a tool that completely transforms the visual experience:
 - Side-by-side display
 - Line numbers
 - Syntax highlighting
@@ -178,8 +178,8 @@ My Git configuration reflects the way I work (but also draws heavily on inspirat
 
 My advice: don't just copy this configuration, but use it as inspiration. Add aliases that correspond to YOUR most frequently used commands. Try out colors that appeal to YOU. Your `.gitconfig` should reflect your personality.
 
-If this configuration inspires you, you can find my complete `.gitconfig` file [here](https://github.com/r-seize/dotfiles) and freely adapt it to your own workflow.
+If this configuration inspires you, you can find my complete `.gitconfig` file <a href="https://github.com/r-seize/dotfiles" target="_blank">here</a> and freely adapt it to your own workflow.
 
 ---
 
-*PS: If you want to see delta in action, I highly recommend checking out [Delta](https://github.com/dandavison/delta). It's easy to install and it really changes your life.*
+*PS: If you want to see delta in action, I highly recommend checking out <a href="https://github.com/dandavison/delta" target="_blank">Delta</a>. It's easy to install and it really changes your life.*

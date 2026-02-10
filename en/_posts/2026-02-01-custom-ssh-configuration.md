@@ -48,4 +48,4 @@ For companies or schools, simply use the corresponding alias (`github.com-work` 
 
 This method is practical, clean, and avoids a lot of confusion when juggling multiple GitHub environments on the same machine.
 
-If this configuration inspires you, you can find my complete `.ssh/config` file [here](https://github.com/r-seize/dotfiles) and freely adapt it to your own workflow.
+If this configuration inspires you, you can find my complete `.ssh/config` file <a href="https://github.com/r-seize/dotfiles" target="_blank">here</a> and freely adapt it to your own workflow.

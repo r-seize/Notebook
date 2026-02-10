@@ -23,6 +23,7 @@ description: "Personal blog for sharing technical notes on IT / Blog personnel d
 url: "https://r-seize.github.io"
 baseurl: "/Notebook"
 footer_content: ""
+author: R-Seize
 
 remote_theme: just-the-docs/just-the-docs@v0.10.0
 

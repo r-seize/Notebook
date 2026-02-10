@@ -119,7 +119,7 @@ Depuis que Git a introduit `restore` et `switch` pour clarifier les usages de `c
   line-numbers  = true
 ```
 
-J'utilise [delta](https://github.com/dandavison/delta) pour afficher mes diffs. C'est un outil qui transforme complètement l'expérience visuelle :
+J'utilise <a href="https://github.com/dandavison/delta" target="_blank">delta</a> pour afficher mes diffs. C'est un outil qui transforme complètement l'expérience visuelle :
 - Affichage côte à côte
 - Numéros de ligne
 - Coloration syntaxique
@@ -179,8 +179,8 @@ Ma configuration Git, c'est le reflet de ma façon de travailler(mais aussi plei
 
 Mon conseil : ne copiez pas bêtement cette config, mais inspirez-vous-en. Ajoutez les alias qui correspondent à VOS commandes les plus fréquentes. Testez les couleurs qui VOUS parlent. Votre `.gitconfig` doit être à votre image.
 
-Si cette configuration t’inspire, tu peux retrouver mon fichier `.gitconfig` complet [ici](https://github.com/r-seize/dotfiles) et l’adapter librement à ton propre workflow.
+Si cette configuration t’inspire, tu peux retrouver mon fichier `.gitconfig` complet <a href="https://github.com/r-seize/dotfiles" target="_blank">ici</a> et l’adapter librement à ton propre workflow.
 
 ---
 
-*PS : Si vous voulez voir delta en action, je vous recommande vraiment d'aller faire un tour sur [Delta](https://github.com/dandavison/delta). L'installation est simple et ça change vraiment la vie.*
+*PS : Si vous voulez voir delta en action, je vous recommande vraiment d'aller faire un tour sur <a href="https://github.com/dandavison/delta" target="_blank">Delta</a>. L'installation est simple et ça change vraiment la vie.*
